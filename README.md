@@ -257,7 +257,6 @@ Infineon provides a wealth of data at [www.infineon.com](https://www.infineon.co
 ## Document history
 
 
-Document title: *CE223541* - *HAL: Hello world*
 
  Version | Description of change
  ------- | ---------------------
