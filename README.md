@@ -1,7 +1,9 @@
 # HAL: Hello world
 
-This code example demonstrates a simple UART communication by printing the "Hello world" message on a terminal and blinking an LED using a timer resource. The code example is based on HAL(Hardware Abstraction Layer) libraries.
+The Serial Memory Interface (SMIF) in PSoC 6 operates in two modes of operation, the Command mode (MMIO) and Memory Mapped mode (XIP).  
 
+One of the main feature of the PSoC 6 family of devices is it's emphasis on security. One important feature of SMIF is encryption. 
+The SMIF block has an inbuilt 128-bit AES encryption engine. This encryption hardware is dedicated to the SMIF block. This encryption is available for usage in both the Memory-mapped (XIP) and command (MMIO) modes of operation. In the XIP mode the cryptography hardware supports on-the-fly encryption in write operations and on-the-fly decryption for read operations. Encryption support can be enabled/disabled, for individual external memory device slaves. Thus once configured initially the encryption feature is automatic and almost invisible.
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-hal-hello-world)
 
@@ -9,7 +11,7 @@ This code example demonstrates a simple UART communication by printing the "Hell
 
 ## Requirements
 
-- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.1 or later (tested with v3.1)
+- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.2 
 - Board support package (BSP) minimum required version for:
    - PSoC&trade; 6 MCU: v4.2.0
    - CYW920829M2EVK-02: v1.0.1
@@ -26,24 +28,8 @@ This code example demonstrates a simple UART communication by printing the "Hell
 
 ## Supported kits (make variable 'TARGET')
 
-- [PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; Prototyping Kit](https://www.infineon.com/CY8CPROTO-062S2-43439) (`CY8CPROTO-062S2-43439`) – Default value of `TARGET`
-- [PSoC&trade; 6 Wi-Fi Bluetooth&reg; Prototyping Kit](https://www.infineon.com/CY8CPROTO-062-4343W) (`CY8CPROTO-062-4343W`)
-- [AIROC&trade; CYW20829 Bluetooth&reg; LE Evaluation kit](https://www.infineon.com/CYW920829M2EVK-02) (`CYW920829M2EVK-02`)
-- [PSoC&trade; 6 Wi-Fi Bluetooth&reg; Pioneer Kit](https://www.infineon.com/CY8CKIT-062-WIFI-BT) (`CY8CKIT-062-WIFI-BT`)
-- [PSoC&trade; 6 Bluetooth&reg; LE Pioneer Kit](https://www.infineon.com/CY8CKIT-062-BLE) (`CY8CKIT-062-BLE`)
-- [PSoC&trade; 6 Bluetooth&reg; LE Prototyping Kit](https://www.infineon.com/CY8CPROTO-063-BLE) (`CY8CPROTO-063-BLE`)
 - [PSoC&trade; 62S2 Wi-Fi Bluetooth&reg; Pioneer Kit](https://www.infineon.com/CY8CKIT-062S2-43012) (`CY8CKIT-062S2-43012`)
-- [PSoC&trade; 62S1 Wi-Fi Bluetooth&reg; Pioneer Kit](https://www.infineon.com/CYW9P62S1-43438EVB-01) (`CYW9P62S1-43438EVB-01`)
-- [PSoC&trade; 62S1 Wi-Fi Bluetooth&reg; Pioneer Kit](https://www.infineon.com/CYW9P62S1-43012EVB-01) (`CYW9P62S1-43012EVB-01`)
-- [PSoC&trade; 64 "Secure Boot" Wi-Fi Bluetooth&reg; Pioneer Kit](https://www.infineon.com/CY8CKIT-064B0S2-4343W) (`CY8CKIT-064B0S2-4343W`)
-- [PSoC&trade; 64 Standard Secure – AWS Wi-Fi Bluetooth&reg; Pioneer Kit](https://www.infineon.com/CY8CKIT-064S0S2-4343W) (`CY8CKIT-064S0S2-4343W`)
-- [PSoC&trade; 62S4 Pioneer Kit](https://www.infineon.com/CY8CKIT-062S4) (`CY8CKIT-062S4`)
-- [PSoC&trade; 62S2 Evaluation Kit](https://www.infineon.com/CY8CEVAL-062S2) (`CY8CEVAL-062S2`, `CY8CEVAL-062S2-LAI-4373M2`, `CY8CEVAL-062S2-MUR-43439M2`, `CY8CEVAL-062S2-LAI-43439M2`, `CY8CEVAL-062S2-MUR-4373EM2`, `CY8CEVAL-062S2-MUR-4373M2`,`CY8CEVAL-062S2-CYW43022CUB`)
-- [PSoC&trade; 64 "Secure Boot" Prototyping Kit](https://www.infineon.com/CY8CPROTO-064B0S3) (`CY8CPROTO-064B0S3`)
-- [PSoC&trade; 64 "Secure Boot" Prototyping Kit](https://www.infineon.com/CY8CPROTO-064S1-SB) (`CY8CPROTO-064S1-SB`)
-- [XMC7200 Evaluation Kit](https://www.infineon.com/KIT_XMC72_EVK) (`KIT_XMC72_EVK`, `KIT_XMC72_EVK_MUR_43439M2`)
-- [PSoC&trade; 62S3 Wi-Fi Bluetooth&reg; Prototyping Kit](https://www.infineon.com/CY8CPROTO-062S3-4343W) (`CY8CPROTO-062S3-4343W`)
-- [XMC7100 Evaluation Kit](https://www.infineon.com/KIT_XMC71_EVK_LITE_V1) (`KIT_XMC71_EVK_LITE_V1`)
+
 
 ## Hardware setup
 
@@ -212,14 +198,8 @@ If using a PSoC&trade; 64 "Secure" MCU kit (like CY8CKIT-064B0S2-4343W), the PSo
       ```
    </details>
 
-4. After programming, the application starts automatically. Confirm that "HAL: Hello World! Example" is displayed on the UART terminal.
+4. After programming, the application starts automatically. Confirm that data is displayed on the UART terminal.
 
-
-   **Figure 1. Terminal output on program startup**
-
-   ![](images/terminal-hello-world.png)
-
-5. Confirm that the kit LED blinks at approximately 1 Hz.
 
 
 ## Debugging
