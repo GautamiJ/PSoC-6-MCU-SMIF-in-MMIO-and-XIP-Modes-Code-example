@@ -1,4 +1,5 @@
-# HAL: Hello world
+# PSoC 6 MCU SMIF in MMIO and XIP Modes Code example
+
 
 The Serial Memory Interface (SMIF) in PSoC 6 operates in two modes of operation, the Command mode (MMIO) and Memory Mapped mode (XIP).  
 
@@ -164,7 +165,6 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
 ## Operation
 
 
-If using a PSoC&trade; 64 "Secure" MCU kit (like CY8CKIT-064B0S2-4343W), the PSoC&trade; 64 device must be provisioned with keys and policies before being programmed. Follow the instructions in the ["Secure Boot" SDK user guide](https://www.infineon.com/dgdlac/Infineon-PSoC_64_Secure_MCU_Secure_Boot_SDK_User_Guide-Software-v07_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0f8c361a7666) to provision the device. If the kit is already provisioned, copy-paste the keys and policy folder to the application folder.
 1. Connect the board to your PC using the provided USB cable through the KitProg3 USB connector.
 
 2. Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud.
